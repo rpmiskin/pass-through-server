@@ -7,10 +7,13 @@ const app = express();
 app.disable('x-powered-by');
 app.use(express.json());
 
+const TARGET_FQDN = process.env.TARGET_FQDN || 'localhost';
+const TARGET_PORT = process.env.TARGET_PORT || '3000';
+
 // Set up a defaults axios instance with any common settings
 // e.g. client certs
 const instance = axios.create({
-  baseURL: 'http://localhost:3000'
+  baseURL: 'http://${TARGET_FQDN}:${TARGET_PORT}'
 });
 
 // Maps from a request axios config, also demonstrates adding
