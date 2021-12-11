@@ -7,9 +7,10 @@ const app = express();
 app.disable('x-powered-by');
 app.use(express.json());
 
+const TARGET_PROTOCOL = process.env.TARGET_PROTOCOL || 'http';
 const TARGET_FQDN = process.env.TARGET_FQDN || 'localhost';
 const TARGET_PORT = process.env.TARGET_PORT || '3000';
-const baseURL = `http://${TARGET_FQDN}:${TARGET_PORT}`
+const baseURL = `${TARGET_PROTOCOL}://${TARGET_FQDN}:${TARGET_PORT}`
 
 // Set up a defaults axios instance with any common settings
 // e.g. client certs
