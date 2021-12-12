@@ -22,7 +22,8 @@ const instance = axios.create({
 // modifying the headers
 function defaultRequestMapper(req){
   const { url, method, headers, body:data } = req;
-  delete headers.Host;
+  console.log(JSON.stringify(headers, null, 3));
+  delete headers.host;
   return {url, method, headers, data};
 }
 
