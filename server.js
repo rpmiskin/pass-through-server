@@ -22,7 +22,7 @@ const instance = axios.create({
 // modifying the headers
 function defaultRequestMapper(req){
   const { url, method, headers, body:data } = req;
-  headers.Authorization = 'Bearer a-valid-token';
+  delete headers.Host;
   return {url, method, headers, data};
 }
 
